@@ -1,0 +1,23 @@
+<h1>Resturant</h1>
+
+<p><%= @restaurant.name %> </p>
+<p><%= @restaurant.address %> </p>
+<p><%= @restaurant.phone_number %> </p>
+<p><%= @restaurant.category.capitalize %> </p>
+<hr>
+<h2>Reviews</h2>
+<ul>
+  <% if @reviews.any? %>
+    <% @reviews.each do |r| %>
+     <p><%= '🤩 ' * r.rating %></p>
+     <p><%= r.content %></p>
+    <% end %>
+  <% else %>
+    <p><%= "None. Write one!" %><p>
+  <% end %>
+</ul>
+
+<hr>
+<p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant.id) %></p>
+<p><%= link_to "Post Review", new_restaurant_review_path(@restaurant.id) %></p>
+<%= link_to "Back", restaurants_path %>
